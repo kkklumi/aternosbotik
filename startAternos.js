@@ -11,6 +11,13 @@ module.exports = async function startAternos() {
   try {
     await page.goto('https://aternos.org/account/', { waitUntil: 'networkidle2' });
 
+    // Сделать скриншот страницы
+    await page.screenshot({ path: 'aternos_login_page.png' });
+
+    await page.waitForSelector('input[name="user"]');
+
+    await page.goto('https://aternos.org/account/', { waitUntil: 'networkidle2' });
+
     // Ждём поля логина
     await page.waitForSelector('input[name="user"]');
     await page.type('input[name="user"]', process.env.ATERNOS_EMAIL);
