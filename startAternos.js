@@ -3,7 +3,6 @@ const puppeteer = require('puppeteer');
 async function startAternos() {
   const browser = await puppeteer.launch({
     headless: true,
-    executablePath: '/usr/bin/chromium-browser', // или '/usr/bin/google-chrome'
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
 
