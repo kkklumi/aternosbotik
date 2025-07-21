@@ -13,6 +13,25 @@ module.exports = async function startAternos() {
 
     // Сделать скриншот страницы
     await page.screenshot({ path: 'aternos_login_page.png' });
+    const fs = require('fs');
+    const { AttachmentBuilder } = require('discord.js');
+
+    // в index.js
+    if (message.content === '!старт') {
+    await message.reply('⏳ Пытаюсь запустить сервер Aternos...');
+    try {
+    const result = await startAternos();
+    await message.reply(result);
+  } catch (error) {
+    try {
+      const file = new AttachmentBuilder('./aternos_login_page.png');
+      await message.reply({ content: `❌ Ошибка:\n\`\`\`${error.message}\`\`\``, files: [file] });
+    } catch {
+      await message.reply(`❌ Ошибка:\n\`\`\`${error.message}\`\`\``);
+    }
+  }
+}
+
 
     await page.waitForSelector('input[name="user"]');
 
