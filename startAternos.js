@@ -8,6 +8,10 @@ module.exports = async function startAternos() {
   const page = await browser.newPage();
 
   try {
+    console.log('🔑 Заходим на aternos.org...');
+    console.log('✅ Авторизуемся...');
+    console.log('➡️ Переход на сервер...');
+    console.log('🚀 Нажимаем старт...');
     await page.goto('https://aternos.org/go/', { waitUntil: 'networkidle2' });
     await page.type('#user', process.env.ATERNOS_EMAIL);
     await page.type('#password', process.env.ATERNOS_PASSWORD);
