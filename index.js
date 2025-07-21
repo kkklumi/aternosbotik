@@ -19,7 +19,8 @@ client.on('messageCreate', async (message) => {
       const result = await startAternos();
       await message.reply(result);
     } catch (err) {
-      await message.reply(`❌ Ошибка:\n\`\`\`${err.message}\`\`\``);
+      console.error('Ошибка запуска Aternos:', error);
+      await message.reply(`❌ Ошибка:\n\`\`\`${error.message}\`\`\``);
     }
   }
 });
